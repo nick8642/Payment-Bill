@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'accountant_menu.html' %}
+<div style="width: 50%;">
+    <h1 style="color: red">List of Student</h1>
+</div>
+<div id="customers">
+    <table style="width: 100%">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>M.No.</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>D.O.J</th>
+            <th>Course</th>
+            <th>Paid</th>
+            <th>Balance</th>
+            <th>Operation</th>
+        </tr>
+        {% for s in students %}
+            <tr>
+                <td>
+                    {{ s.id }}
+                </td>
+                <td>
+                    {{ s.name }}
+
+                </td>
+                <td>
+                    {{ s.mno }}
+                </td>
+                <td>
+                    {{ s.address }}
+                </td>
+                <td>
+                    {{ s.email }}
+                </td>
+                <td>
+                    {{ s.doj }}
+                </td>
+                <td>
+                    {{ s.course }}
+                </td>
+                <td>
+                    {{ s.paid }}
+                </td>
+                <td>
+                    {{ s.balance }}
+                </td>
+                {% if s.balance != 0.0 %}
+                    <td>
+                        <a href="/pay_fees/{{ s.id }}">Paid</a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

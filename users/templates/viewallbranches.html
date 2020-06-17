@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'admin_menu.html' %}
+<div style="width: 50%; margin-left: 25%">
+    <h1 style="color: red">List of Branches</h1>
+
+<div id="customers">
+    <table style="width: 100%">
+        <tr>
+            <th>S.No.</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Operation</th>
+        </tr>
+        {% for b in branches %}
+            <tr>
+                <td>
+                    {{ b.id }}
+                </td>
+
+                <td>
+                    {{ b.name }}
+                </td>
+                <td>
+                    {{ b.city }}
+                </td>
+                <td>
+                    {{ b.address }}
+                </td>
+                <td>
+                    {{ b.phone }}
+                </td>
+                <td>
+                    <a href="/editbranch/{{ b.id }}">Edit</a>
+                    <a href="/deletebranch/{{ b.id }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

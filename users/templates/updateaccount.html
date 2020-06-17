@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div>
+    {% include 'header.html' %}
+</div>
+
+<div>
+    {% include 'admin_menu.html' %}
+</div>
+
+<div style="width: 50%; margin-left: 25%">
+    <h1 style="color: red">Update Account</h1>
+
+    <form method="post" action="/updateaccount/{{ account.id }}">
+        {% csrf_token %}
+        <input class="form" value="{{ account.name }}" type="text" name="name" placeholder="Enter name" required="">
+        <input class="form" value="{{ account.uname }}" type="text" name="uname" placeholder="Enter uname" required="">
+        <input class="form" value="{{ account.pwd }}" type="text" name="pwd" placeholder="Enter password" required="">
+        <input class="form" value="{{ account.mno }}" type="text" name="mno" placeholder="Enter mobilenumber" required="">
+        <input class="form" value="{{ account.address}}" type="text" name="address" placeholder="Enter address" required="">
+        <input class="form" value="{{ account.doj}}" type="text" name="doj" placeholder="Enter doj" required="">
+        <input class="form" value="{{ account.salary }}" type="text" name="salary" placeholder="Enter salary" required="">
+        <input class="form" value="{{ account.email }}" type="text" name="email" placeholder="Enter email" required="">
+        <select class="form" name="bid">
+            <option>---Select Branch</option>
+            {% for b in branches %}
+                <option value="{{ b.id }}">{{ b.name }}</option>
+            {% endfor %}
+
+        </select>
+
+        <input type="submit" value="Add Account_master">
+    </form>
+</div>
+</body>
+</html>

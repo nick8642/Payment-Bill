@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'main_menu.html' %}
+<div style="width: 50%; margin-left: 25%">
+    <h1 style="color: red">Update Branch</h1>
+
+<div style="width: 50%; margin-left: 25%">
+    <form action="/updatebranch/{{ branch.id }}" method="post">
+        {% csrf_token %}
+        <input class="form" type="text" placeholder="Enter name" name="name" value="{{ branch.name }}">
+        <input class="form" type="text" placeholder="Enter city" name="city" value="{{ branch.city }}">
+        <input class="form" type="text" placeholder="Enter address" name="address" value="{{ branch.address }}">
+        <input class="form" type="text" placeholder="Enter phone" name="phone" value="{{ branch.phone }}">
+        <input type="submit" value="Update">
+    </form>
+</div>
+</body>
+</html>

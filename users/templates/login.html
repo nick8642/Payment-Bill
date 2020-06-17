@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div>
+    {% include 'header.html' %}
+</div>
+
+<div>
+    {% include 'main_menu.html' %}
+</div>
+{{ result }}
+<div style="width: 50%; margin-left: 25%">
+    <h1 style="color: #2c38ff">Login Form</h1>
+    <form action="login" method="post" >
+        {% csrf_token %}
+        <input class="form" type="text" name="uname" placeholder="Enter username" required="">
+        <input class="form" type="password" name="pwd" placeholder="Enter password" required="">
+        <input type="radio" checked name="lperson" value="Admin">Admin
+        <input type="radio" name="lperson" value="Accountant">Accountant
+        <br><br>
+        <input type="submit" value="Login">
+    </form>
+</div>
+<div><img src="{% static 'images/manage.jpg' %}"width="100"height="100">
+</div>
+</body>
+</html>

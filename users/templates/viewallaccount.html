@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'admin_menu.html' %}
+<div style="width: 100%;">
+    <h1 style="color: red">List of Accountant</h1>
+</div>
+<div id="customers" style="width: 100%">
+    <table style="width: 100%" >
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>User Name</th>
+                        <th>M.No.</th>
+            <th>Address</th>
+
+            <th>Branch</th>
+            <th>D.O.J</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Operation</th>
+        </tr>
+        {% for c in account_master %}
+            <tr>
+            <td>
+                {{ c.id }}
+            </td>
+
+                <td>
+                    {{ c.name }}
+                </td>
+                <td>
+                    {{ c.uname }}
+                </td>
+
+                <td>
+                    {{ c.mno }}
+                </td>
+                 <td>
+                    {{ c.address }}
+                </td>
+
+                 <td>
+                    {{ c.branch }}
+                </td>
+
+                 <td>
+                    {{ c.doj }}
+                </td>
+                 <td>
+                    {{ c.salary }}
+                </td>
+                 <td>
+                    {{ c.email }}
+                </td>
+                <td>
+                    <a href="/getaccount/{{ c.id }}">Edit</a>
+                    <a href="/deleteaccount_master/{{ c.id }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

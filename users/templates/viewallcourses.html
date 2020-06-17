@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'admin_menu.html' %}
+
+<div id="customers">
+<h1 style="color: red">
+    List of Courses
+</h1>
+    <table style="width: 100%">
+        <tr>
+            <th>S.No.</th>
+            <th>Name</th>
+            <th>Fees</th>
+            <th>Seats</th>
+            <th>Branch</th>
+            <th>Operation</th>
+        </tr>
+        {% for c in courses %}
+            <tr>
+                <td>
+                    {{ c.id }}
+                </td>
+
+                <td>
+                    {{ c.name }}
+                </td>
+                <td>
+                    {{ c.fees }}
+                </td>
+                <td>
+                    {{ c.seats }}
+                </td>
+                <td>
+                    {{ c.bid }}
+                </td>
+                <td>
+                    <a href="/getcourse/{{ c.id }}">Edit</a>
+                    <a href="/deletecourse/{{ c.id }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
